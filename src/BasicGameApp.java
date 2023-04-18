@@ -20,20 +20,11 @@ import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.sound.sampled.*;
-
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
-import java.awt.Graphics2D;
-import java.awt.event.*;
-import java.awt.image.BufferStrategy;
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.sound.sampled.*;
+
 
 public class BasicGameApp implements Runnable, KeyListener, MouseMotionListener, MouseListener {
 	public int LEVEL = 1;
@@ -101,9 +92,9 @@ public class BasicGameApp implements Runnable, KeyListener, MouseMotionListener,
       //create (construct) the objects needed for the game and load up
 		jet_picture = Toolkit.getDefaultToolkit().getImage("jet.png");
 		small_invader_picture = Toolkit.getDefaultToolkit().getImage("sinvader.png");
-		HQ_picture = Toolkit.getDefaultToolkit().getImage("HQ.jpeg");
-		bomb_picture = Toolkit.getDefaultToolkit().getImage("bomb.jpeg");
-		space_picture = Toolkit.getDefaultToolkit().getImage("space.jpeg");
+		HQ_picture = Toolkit.getDefaultToolkit().getImage("HQ.png");
+		bomb_picture = Toolkit.getDefaultToolkit().getImage("bomb.png");
+		space_picture = Toolkit.getDefaultToolkit().getImage("space.jpg");
 		playSound("pop_song.wav");
 
 		jet = new Fighter(500,350, 3);
@@ -273,7 +264,7 @@ public void gameOver(){
 			}
    }
    private void setUpGraphics() {
-      frame = new JFrame("Application Template");   //Create the program window or frame.  Names it.
+      frame = new JFrame("Mr. Chun's Star Wars Journey");   //Create the program window or frame.  Names it.
    
       panel = (JPanel) frame.getContentPane();  //sets up a JPanel which is what goes in the frame
       panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));  //sizes the JPanel
@@ -342,19 +333,22 @@ if (hasStarted == true && hasLost == false){
 	g.setColor(Color.BLACK);
 	if (LEVEL>1){
 
-		g.drawString("Conratulations on beating level "+(LEVEL-1)+"!", 450, 600);
+		g.drawString("Congratulations on getting through wave "+(LEVEL-1)+"!", 350, 400);
 	}
 	g.drawString("Click to start level "+LEVEL, 450, 250);
 	if (LEVEL == 1) {
 
-		g.drawString("Win by shooting down the headquarters!", 450, 100);
+		g.drawString("Help Mr. Chun's spaceship win his boba!", 400, 100);
+		g.drawString("Directions: WASD, click mouse to shoot", 400, 130);
+		g.drawString("Avoid the invader's missles!", 400, 160);
 	}
 
 
 
 }
 if (hasLost){
-	g.drawString("GAME OVER", 450, 250);
+	g.drawString("You lost on level " + LEVEL +"...no boba for you.", 350, 250);
+
 
 }
 
